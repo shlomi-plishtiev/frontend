@@ -30,7 +30,7 @@ export function UrlMetadataFetcher() {
     }
   }
   
-  
+  // שולח בקשות לשרת
   async function fetchMetadata() {
     const fetchedMetadata = []
     const errorList = []

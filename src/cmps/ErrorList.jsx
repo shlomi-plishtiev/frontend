@@ -1,5 +1,3 @@
-import React from 'react'
-
 export function ErrorList({ errors }) {
   return (
     <div className="error-container">

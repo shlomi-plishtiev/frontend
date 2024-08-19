@@ -1,5 +1,3 @@
-import React from 'react'
-
 export function MetadataCard({ meta }) {
   return (
     <div className="metadata-card">
