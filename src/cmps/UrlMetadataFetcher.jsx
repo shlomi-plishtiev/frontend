@@ -20,13 +20,11 @@ export function UrlMetadataFetcher() {
   // מוסיף שדה חדש
   function addUrlField() {
     setUrls([...urls, ''])
-    showSuccessMsg('URL field added successfully')
   }
     // מוחק שדה עד 3 אחרונים
   async function removeUrlField() {
     if (urls.length > 3) {
       setUrls(urls.slice(0, -1));
-      showSuccessMsg('URL field removed')
     } else {
       showErrorMsg('You cannot remove the URL field')
     }
@@ -66,6 +64,8 @@ export function UrlMetadataFetcher() {
   function handleSubmit(e) {
     e.preventDefault()
     fetchMetadata()
+    showSuccessMsg('Metadata fetched successfully!');
+
   }
 
   return (
@@ -78,10 +78,10 @@ export function UrlMetadataFetcher() {
       />
 
       <div className="buttons-container">
-        <button className="add-url-button" onClick={addUrlField}>
+        <button className="url-button" onClick={addUrlField}>
           Add URL Field
         </button>
-        <button className="remove-url-button" onClick={removeUrlField}>
+        <button className="url-button" onClick={removeUrlField}>
           Remove URL Field
         </button>
       </div>
