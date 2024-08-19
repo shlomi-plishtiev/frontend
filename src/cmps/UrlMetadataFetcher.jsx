@@ -2,6 +2,7 @@ import { UrlForm } from './UrlForm'
 import { MetadataCard } from './MetadataCard'
 import { ErrorList } from './ErrorList'
 import { useState } from 'react'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
 export function UrlMetadataFetcher() {
   const [urls, setUrls] = useState(['', '', ''])
@@ -19,12 +20,19 @@ export function UrlMetadataFetcher() {
   // מוסיף שדה חדש
   function addUrlField() {
     setUrls([...urls, ''])
+    showSuccessMsg('URL field added successfully')
   }
-  const removeUrlField = () => {
-    if (urls.length > 3) { 
-      setUrls(urls.slice(0, -1))
+    // מוחק שדה עד 3 אחרונים
+  async function removeUrlField() {
+    if (urls.length > 3) {
+      setUrls(urls.slice(0, -1));
+      showSuccessMsg('URL field removed')
+    } else {
+      showErrorMsg('You cannot remove the URL field')
     }
   }
+  
+  
   async function fetchMetadata() {
     const fetchedMetadata = []
     const errorList = []
