@@ -1,8 +1,7 @@
 export function AppFooter() {
-
 	return (
-		<footer className="app-footer full">
-			{/* <p>Coffeerights &copy; 2024</p> */}
-		</footer>
-	)
-}
+	  <footer className="app-footer">
+		<p>&copy; 2024 CoffeeRights. All rights reserved by Shlomi.</p>
+	  </footer>
+	);
+  }

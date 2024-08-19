@@ -9,7 +9,8 @@
 @import "basics/layout";
 
 // pages
-@import "pages/HomePage.scss";
+@import "cmp/Header.scss";
+@import "cmp/Footer.scss";
 
 // cmp
 @import "cmp/UrlMetadataFetcher.scss";
@@ -17,3 +18,20 @@
 @import "cmp/ErrorList.scss";
 @import "cmp/UserMsg";
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.app-footer {
+  margin-top: auto;
+}
