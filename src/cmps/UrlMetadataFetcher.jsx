@@ -38,7 +38,7 @@ export function UrlMetadataFetcher() {
     for (const url of urls) {
       if (url.trim() === '') continue
       try {
-        const response = await fetch('http://localhost:3000/fetch-metadata', {
+        const response = await fetch('http://localhost:10000/fetch-metadata', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
