@@ -1,6 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .app-footer {
+    margin-top: auto;
+  }
 .main-container {
     display: grid;
-    grid-template-columns: 1rem 1fr 1rem;
+    grid-template-columns: 0px 1fr 0px;
 
     > * {
         grid-column: 2;

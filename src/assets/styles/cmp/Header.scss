@@ -8,6 +8,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: 'Lato-Bold';
 
+    @media (max-width: 768px) {
+        align-items: flex-start;
+        padding: 10px;
+    }
 }
 
 .logo {
@@ -15,6 +19,14 @@
         margin: 0;
         font-size: 26px;
         font-weight: bold;
+
+        @media (max-width: 768px) {
+            font-size: 22px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 18px;
+        }
     }
 }
 
@@ -25,7 +37,13 @@
         padding: 0;
         display: flex;
         gap: 20px;
-        
+
+        @media (max-width: 768px) {
+            gap: 10px;
+            width: 100%;
+            text-align: center;
+            margin-top: 3px;
+        }
     }
 
     a {
@@ -35,6 +53,14 @@
 
         &:hover {
             color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 14px;
         }
     }
 }
@@ -53,6 +79,16 @@
 
         &:hover {
             background: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 15px;
+            padding: 6px 12px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 14px;
+            padding: 4px 10px;
         }
     }
 }
