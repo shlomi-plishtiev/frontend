@@ -9,52 +9,49 @@ export function UrlMetadataFetcher() {
   const [metadata, setMetadata] = useState([])
   const [errors, setErrors] = useState([])
 
-
-  // טיפול בשינוי כתובת האתר
+  // Handle URL change
   function handleUrlChange(index, value) {
     const newUrls = [...urls]
     newUrls[index] = value
     setUrls(newUrls)
   }
 
-  // מוסיף שדה חדש
+  // Add new URL field
   function addUrlField() {
     setUrls([...urls, ''])
   }
-    // מוחק שדה עד 3 אחרונים
+
+  // Remove URL field
   async function removeUrlField() {
     if (urls.length > 3) {
-      setUrls(urls.slice(0, -1));
+      setUrls(urls.slice(0, -1))
     } else {
       showErrorMsg('You cannot remove the URL field')
     }
   }
-  
-  // שולח בקשות לשרת
+
+  // Fetch metadata from the backend
   async function fetchMetadata() {
     const fetchedMetadata = []
     const errorList = []
 
-    for (const url of urls) {
-      if (url.trim() === '') continue
-      try {
-        const response = await fetch('http://localhost:3000/fetch-metadata', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ urls: [url] }),
-        })
+    try {
+      const response = await fetch('http://localhost:3000/fetch-metadata', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ urls }),
+      })
 
-        const data = await response.json()
-        if (response.ok && data) {
-          fetchedMetadata.push(...data)
-        } else {
-          throw new Error('Invalid URL or unable to fetch metadata')
-        }
-      } catch (error) {
-        errorList.push({ url, error: error.message })
+      const data = await response.json()
+      if (response.ok && data) {
+        fetchedMetadata.push(...data)
+      } else {
+        throw new Error('Invalid response from server')
       }
+    } catch (error) {
+      errorList.push({ url: '', error: error.message })
     }
 
     setMetadata(fetchedMetadata)
@@ -64,8 +61,7 @@ export function UrlMetadataFetcher() {
   function handleSubmit(e) {
     e.preventDefault()
     fetchMetadata()
-    showSuccessMsg('Metadata fetched successfully!');
-
+    showSuccessMsg('Metadata fetched successfully!')
   }
 
   return (
